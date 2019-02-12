@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf8">
+    <link rel="icon">
+    <title>&nbsp;</title>
+
+    <style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-size: 13px;
+    }
+
+    .🦃 {
+        font-family: sans-serif;
+        font-size: 48px;
+        animation: spinForFun 6s ease-in-out infinite;
+    }
+
+    .🦃__explanation {
+        display: block;
+        color: rgb(123,123,123);
+        padding: 8px;
+    }
+
+    .🦃__explanation i {
+        display: block;
+        padding-top: 3px;
+        font-size: smaller;
+        color: rgb(190,190,190);
+        letter-spacing: 2px;
+    }
+
+    @keyframes spinForFun {
+        from { 
+            transform: rotate(0) scale(1);
+        }
+        25% {
+            opacity: 1;
+            transform: rotate(4deg) scale(1.1);
+        }
+        50% {
+            opacity: .8;
+            transform: rotate(0) scale(.9);
+        }
+        75% {
+            opacity: 1;
+            transform: rotate(-4deg) scale(1.1);
+        }
+        to {
+            transform: rotate(0) scale(1);
+        }
+    }
+    ::selection {
+        background: rgb(142,86,46);
+        color: #fff;
+    }
+    ::-moz-selection {
+        background: rgb(142,86,46);
+        color: #fff;
+    }
+    </style>
+
+    <script>
+    (function () {
+
+        // Credits for emoji to favicon:
+        // https://koddsson.com/posts/emoji-favicon/
+        // many thanks!
+        const canvas = document.createElement('canvas');
+        canvas.height = 64;
+        canvas.width = 64;
+
+        const ctx = canvas.getContext('2d');
+        ctx.font = '56px serif';
+        ctx.fillText('🦃', 0, 64);
+        console.log(canvas.toDataURL());
+
+        const favicon = document.querySelector('link[rel=icon]');
+        favicon.href = canvas.toDataURL();
+
+        // Credits for warning message when closed:
+        // https://stackoverflow.com/a/10311375
+        // many thanks, too!
+        window.onbeforeunload = function(e) {
+            e = e || window.event;
+
+            // ie, firefox < v4
+            if (e) {
+                e.returnValue = '🦃';
+            }
+
+            // safari
+            return '🦃';
+        }
+    })();
+    </script>
+</head>
+<body>
+    <div class="🦃">🦃</div>
+    <p class="🦃__explanation">Pin this tab and leave it in the background.<i>gobblegobble</i></p>
+</body>
+</html>
